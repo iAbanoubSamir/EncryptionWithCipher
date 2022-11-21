@@ -30,8 +30,8 @@ class CryptoManager {
     }
 
     private fun getKey(): SecretKey {
-        val existingKey = keyStore.getEntry(ALIAS, null) as KeyStore.SecretKeyEntry
-        return existingKey.secretKey ?: createKey()
+        val existingKey = keyStore.getEntry(ALIAS, null) as? KeyStore.SecretKeyEntry
+        return existingKey?.secretKey ?: createKey()
     }
 
     private fun createKey(): SecretKey {
